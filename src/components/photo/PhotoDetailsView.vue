@@ -7,7 +7,9 @@
     </router-link></h4>
     <img :src="photo.url">
   </div>
+
   <div v-else-if="error" class="loading">Photo not found!</div>
+
   <div v-else class="loading">Loading...</div>
 </template>
 
@@ -18,12 +20,6 @@ import PhotoGrid from '@/components/photoGrid/PhotoGrid'
 
 export default {
   name: 'PhotoDetailsView',
-  data () {
-    return {
-      msg: 'Photo details view.',
-      loading: true,
-    }
-  },
   computed: {
     photoId() {
       return this.$route.params.id;
@@ -32,8 +28,6 @@ export default {
       return this.$route.params.albumId;
     },
     photo() {
-      console.log('PhotoDetailsView photo()', this.photoId);
-      
       const photo = this.getPhotoById(this.photoId, this.albumId);
       return photo;
     },
@@ -42,13 +36,15 @@ export default {
     },
     album() {
       const album = this.getAlbumById(this.albumId);
-      console.log("album()", album);
       return album;
     },
     error() {
       return this.$store.state.error.photoError;
     },
-    ...mapGetters(['getPhotoById', 'getAlbumById']),
+    ...mapGetters([
+      'getPhotoById',
+      'getAlbumById'
+    ]),
   },
   methods: {
     ...mapActions([
@@ -56,13 +52,9 @@ export default {
     ]),
   },
   mounted() {
-    console.log("PhotoDetailsView mounted", this.photoId, this.albumId);
-    
     this.fetchPhotoById({id: this.photoId, albumId: this.albumId});
   },
   beforeRouteUpdate(to, from, next) {
-    console.log("Before route update", to);
-
     const id = to.params.id;
     const albumId = to.params.albumId;
     this.fetchPhotoById({id, albumId}); 
