@@ -38,7 +38,6 @@ export default {
       return this.album.lastPage || 1;
     },
     photos() {
-      console.log("AlbumDetailsView photos()", this.album.pages[this.page]);
       return this.album.pages[this.page];
     },
     ...mapGetters(['getAlbumById']),
@@ -52,13 +51,11 @@ export default {
     }
   },
   mounted() {
-    console.log("Mounted");
     const id = this.albumId;
     const page = this.page;
     this.fetchAlbum({id, page});
   },
   beforeRouteUpdate(to, from, next) {
-    // console.log("Before route update", to.params.id);
     const id = to.params.id;
     const page = Number(to.query.page) || 1;
     this.fetchAlbum({id, page});
