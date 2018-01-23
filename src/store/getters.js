@@ -59,9 +59,7 @@ export default {
 
   // Gets a page of photos from store.
   getPhotoPage: (state) => (pageNum) => {
-    console.log('Store: getPhotoPage', pageNum);
     const page = state.photoPages[pageNum];
-    console.dir(page);
     return page;
   },
 
