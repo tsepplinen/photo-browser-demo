@@ -10,6 +10,7 @@ import defaultErrorState from './defaultErrorState'
 
 Vue.use(Vuex);
 
+// extend adds a copy of defaultErrorState to state
 const state = Vue.util.extend({
   albums: {},
   albumPages: [],
@@ -18,7 +19,6 @@ const state = Vue.util.extend({
   albumListLastPage: 1,
 
 }, {error: defaultErrorState});
-
 
 export default new Vuex.Store({
   state,
