@@ -23,6 +23,5 @@ export default {
     margin-right: 20px;
     justify-self: stretch;
     text-align: right;
-    /* display: grid; */
   }
 </style>
