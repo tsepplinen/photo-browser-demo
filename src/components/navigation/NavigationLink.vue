@@ -26,6 +26,7 @@ export default {
     width: 100%;
     height: 100%;
   }
+  
   div.router-link-active {
     color: #2c3e50;
     background: lightblue;
