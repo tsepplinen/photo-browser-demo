@@ -1,10 +1,20 @@
 <template>
   <div v-if="album">
     <h2>Album: {{ album.info.title }}</h2>
-    <PageLinker :currentPage="page" :first="1" :last="lastPage" :linkBuilder="pageLinkBuilder" />
+
+    <PageLinker :currentPage="page"
+                :first="1" 
+                :last="lastPage" 
+                :linkBuilder="pageLinkBuilder" />
+
     <PhotoGrid v-if="photos" :photos="photos" />
     <div v-else class="loading">Loading...</div>
-    <PageLinker :currentPage="page" :first="1" :last="lastPage" :linkBuilder="pageLinkBuilder" />
+
+    <PageLinker :currentPage="page"
+                :first="1" 
+                :last="lastPage" 
+                :linkBuilder="pageLinkBuilder" />
+
   </div>
   <div class="loading" v-else>Loading...</div>
 </template>
@@ -23,12 +33,7 @@ export default {
       return this.$route.params.id;
     },
     album() {
-      console.log("album()", this.albumId);
-      
       const album = this.getAlbumById(this.albumId);
-
-      console.dir(album);
-
       return album;
     },
     page() {
