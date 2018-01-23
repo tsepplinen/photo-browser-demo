@@ -2,9 +2,19 @@
   <div>
     <h1>{{ viewTitle }}</h1>
     <div v-if="photos">
-      <PageLinker :currentPage="page" :first="1" :last="lastPage" :linkBuilder="pageLinkBuilder" />
+
+      <PageLinker :currentPage="page" 
+                  :first="1" 
+                  :last="lastPage" 
+                  :linkBuilder="pageLinkBuilder" />
+
       <PhotoGrid :photos="photos"/>
-      <PageLinker :currentPage="page" :first="1" :last="lastPage" :linkBuilder="pageLinkBuilder" />
+
+      <PageLinker :currentPage="page" 
+                  :first="1" 
+                  :last="lastPage" 
+                  :linkBuilder="pageLinkBuilder" />
+
     </div>
     <div v-else class="loading">Loading...</div>
   </div>
@@ -28,7 +38,6 @@ export default {
       return this.$route.params.id;
     },
     photos() {
-      console.log("PhotosView photos");
       return this.getPhotoPage(this.page);
     },
     page() {
@@ -48,12 +57,10 @@ export default {
     }
   },
   mounted() {
-    console.log("PhotosView mounted");
     this.fetchPhotoPage(this.page);
     
   },
   beforeRouteUpdate(to, from, next) {
-    console.log("PhotosView b+eforeRouteUpdate");
     const page = to.query.page;
     this.fetchPhotoPage(page);
     next();
