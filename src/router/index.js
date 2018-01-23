@@ -49,7 +49,9 @@ const router = new Router({
   ]
 });
 
+
 router.beforeEach((to, from, next) => {
+  // Clear all errors when changing route
   store.dispatch('clearErrors');
   next();
 });
