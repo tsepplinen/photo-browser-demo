@@ -1,7 +1,6 @@
 <template>
   <footer>
     <p>Copyright © Toni Seppäläinen 2018</p>
-    
   </footer>
 </template>
 
@@ -15,7 +14,6 @@ export default {
 <style scoped>
   
   footer {
-    /* height: 100px; */
     color: white;
     text-align: center;
     width: 100%;
@@ -23,6 +21,4 @@ export default {
     margin: 0;
     padding: 30px 0;
   }
-
-
 </style>
