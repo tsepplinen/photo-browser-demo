@@ -10,11 +10,6 @@ import PhotoThumb from './PhotoThumb'
 
 export default {
   name: 'PhotoGrid',
-  data() {
-    return {
-      msg: 'test',
-    }
-  },
   props: ['photos'],
   components: {
     PhotoThumb,
