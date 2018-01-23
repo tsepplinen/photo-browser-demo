@@ -2,7 +2,7 @@
   <div v-if="photo && !error">
     <h2>Name: {{ photo.title }}</h2>
     <h4><router-link :to="albumLink">Album:
-      <span v-if="album.info">{{ album.info.title }}</span>
+      <span v-if="album && album.info">{{ album.info.title }}</span>
       <span v-else>Loading...</span>
     </router-link></h4>
     <img :src="photo.url">
