@@ -3,17 +3,19 @@ import config from '../config'
 import types from './mutation-types'
 
 export default {
-  async fetchPhotoPage ({ commit, getters}, pageNum) { 
+  async fetchPhotoPage ({commit, getters}, pageNum) { 
     
-    const response = await api.getPhotoPage(pageNum-1);
-    const total = response.headers['x-total-count'];
-    const lastPage = Math.ceil(total / config.PHOTOS_PER_PAGE);
-    const payload = {
-      id: pageNum,
-      photos: response.data,
-      lastPage,
+    if (!getters.getPhotoPage(pageNum)) {
+      const response = await api.getPhotoPage(pageNum-1);
+      const total = response.headers['x-total-count'];
+      const lastPage = Math.ceil(total / config.PHOTOS_PER_PAGE);
+      const payload = {
+        id: pageNum,
+        photos: response.data,
+        lastPage,
+      }
+      commit(types.RECEIVE_PHOTO_PAGE, payload);
     }
-    commit(types.RECEIVE_PHOTO_PAGE, payload);
   },
 
   async fetchAlbumInfo({commit, getters}, id) {
